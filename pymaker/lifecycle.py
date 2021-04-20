@@ -354,6 +354,7 @@ class Lifecycle:
             while True:
                 try:
                     for event in event_filter.get_new_entries():
+                        logging.info("new block from event filter: {event}")
                         new_block_callback(event)
                 except (BlockNotFound, BlockNumberOutofRange, ValueError) as ex:
                     self.logger.warning(f"Node dropped event emitter; recreating latest block filter: {ex}")
